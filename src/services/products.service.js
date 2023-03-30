@@ -7,13 +7,11 @@ class ProductsService{
     //Traer productos
     static async getProducts(){
         const products = await ContenedorDAOProductos.getAll();
-        //const productsDto = convertProductToDto(products);
         return products;
     }
     //Traer producto por id
     static async getProductById(productId){
         const product = await ContenedorDAOProductos.getById(productId);
-        //const productDto = convertProductToDto(product);
         return product;
     }
     //Subir un nuevo producto. Solo disponible para admin

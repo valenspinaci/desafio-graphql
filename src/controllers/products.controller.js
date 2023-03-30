@@ -5,14 +5,14 @@ class ProductsController{
     static async getProducts(req,res){
         try {
             const response = await ProductsService.getProducts();
-            res.status(200).json({
-                status:"Success",
-                data: response
-            })
+                res.status(200).json({
+                    status:"Success",
+                    data: response
+                })
         } catch (error) {
             res.status(400).json({
                 status:"Error",
-                message:`Hubo un error: ${error}`
+                message:`El producto no existe`
             })
         }
     }
@@ -28,7 +28,7 @@ class ProductsController{
         } catch (error) {
             res.status(400).json({
                 status:"Error",
-                message:`Hubo un error: ${error}`
+                message:`${error}`
             })
         }
     }

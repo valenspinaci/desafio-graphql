@@ -24,13 +24,12 @@ class ContenedorMongo{
     }
 
     async getById(productId){
-        try {
             let productos = await this.mongoModel.find();
             const result = productos.find(producto => producto._id == productId)
+            if(!result){
+                throw new Error("El producto no existe")
+            }
             return result;
-        } catch (error) {
-            console.log("No se pudo traer el producto")
-        }
     }
 
     async deleteById(id){

@@ -1,12 +1,10 @@
-import { ProductsService } from "../services/products.service.js";
 import { admin } from "../server.js";
 import { CartsService } from "../services/cart.service.js";
-import { json } from "express";
 
 class CartController{
     static async getCart(req,res){
         try {
-            const response = await CartsService.getCart();
+            const response = await CartsService.getCarts();
             res.status(200).json({
                 status:"Success",
                 data: response
