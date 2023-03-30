@@ -1,5 +1,4 @@
 import { getApi } from "../dbOperations/index.js";
-import {convertProductToDto} from "../dbOperations/dtos/products.dto.js";
 import {options} from "../config/options.js"
 
 const {ContenedorDAOProductos} = await getApi(options.server.DB_TYPE)
@@ -8,9 +7,8 @@ class ProductsService{
     //Traer productos
     static async getProducts(){
         const products = await ContenedorDAOProductos.getAll();
-        console.log(products)
-        const productsDto = convertProductToDto(products);
-        return productsDto;
+        //const productsDto = convertProductToDto(products);
+        return products;
     }
     //Traer producto por id
     static async getProductById(productId){

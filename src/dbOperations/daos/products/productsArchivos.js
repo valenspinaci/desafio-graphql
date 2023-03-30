@@ -1,4 +1,4 @@
-import {ContenedorArchivos} from "../managers/file.manager.js"
+import {ContenedorArchivos} from "../../managers/file.manager.js"
 
 class ProductsDAOArchivos extends ContenedorArchivos{
     constructor(filename){

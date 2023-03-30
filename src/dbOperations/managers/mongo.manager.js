@@ -59,6 +59,16 @@ class ContenedorMongo{
             console.log("No se pudo actualizar el producto")
         }
     }
+
+    async deleteProdById(idCart, idProd){
+        try {
+            let cart = await this.getById(idCart);
+            let prod = await cart.find(p => p.id === idProd);
+            await cart.deleteOne(prod)
+        } catch (error) {
+            console.log("No se pudo eliminar el producto")
+        }
+    }
 }
 
 export {ContenedorMongo};
