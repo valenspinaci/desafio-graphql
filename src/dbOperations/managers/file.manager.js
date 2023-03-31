@@ -49,6 +49,16 @@ class ContenedorArchivos {
         }
     }
 
+    async getByCategory(category){
+        try {
+            const productos = await this.getAll();
+            const productosEncontrados = productos.filter(product => product.category == category);
+            return productosEncontrados;
+        } catch (error) {
+            console.log("La categoría no se encuentra")
+        }
+    }
+
     async deleteById(id){
         try {
             const productos = await this.getAll();

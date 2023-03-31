@@ -33,6 +33,22 @@ class ProductsController{
         }
     }
 
+    static async getProductByCategory(req,res){
+        try {
+            const category = req.params.category
+            const response = await ProductsService.getProductByCategory(category);
+            res.status(200).json({
+                status:"Success",
+                data: response
+            })
+        } catch (error) {
+            res.status(400).json({
+                status:"Error",
+                message:`${error}`
+            })
+        }
+    }
+
     static async uploadProduct(req,res){
         try {
             if(admin){

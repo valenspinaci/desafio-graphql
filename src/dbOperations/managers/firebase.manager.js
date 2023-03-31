@@ -47,6 +47,16 @@ class ContenedorFirebase{
         }
     }
 
+    async getByCategory(category){
+        try {
+            const productos = await this.getAll();
+            const producto = productos.filter(doc=>doc.category == category)
+            return producto;
+        } catch (error) {
+            console.log("No se pudo encontrar esta categoría")
+        }
+    }
+
     async deleteById(id){
         try {
             const producto = this.coleccion.doc(id);

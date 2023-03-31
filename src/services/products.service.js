@@ -14,6 +14,11 @@ class ProductsService{
         const product = await ContenedorDAOProductos.getById(productId);
         return product;
     }
+    //Traer productos por categoria
+    static async getProductByCategory(category){
+        const product = await ContenedorDAOProductos.getByCategory(category);
+        return product;
+    }
     //Subir un nuevo producto. Solo disponible para admin
     static async uploadProduct(body){
         return await ContenedorDAOProductos.save(body)

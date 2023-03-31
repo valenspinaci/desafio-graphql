@@ -32,6 +32,15 @@ class ContenedorMongo{
             return result;
     }
 
+    async getByCategory(prodCategory){
+        let productos = await this.mongoModel.find();
+        const result = productos.filter(producto => producto.category == prodCategory)
+        if(!result){
+            throw new Error("No hay productos de esta categoría")
+        }
+        return result;
+}
+
     async deleteById(id){
         try {
             await this.mongoModel.deleteOne({_id:id});
