@@ -12,19 +12,22 @@ import { ContenedorArchivos } from "./dbOperations/managers/file.manager.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import { normalize, schema } from "normalizr";
+import dotenv from "dotenv";
+
+dotenv.config()
 
 const {ContenedorDAOProductos} = await getApi(options.server.DB_TYPE);
 const {ContenedorDAOCarts} = await getApi(options.server.DB_TYPE);
 const messages = new ContenedorArchivos("src/chat/DB_CHAT.txt");
 
 const app = express();
-export const admin = true;
+export const admin = process.env.ADMIN;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(express.static(__dirname + "/public"));
 
-const PORT = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, ()=>(console.log(`Servidor inicializado en puerto ${PORT}`)));
 
 //Cookie parser
@@ -35,7 +38,7 @@ app.use(session({
     store: MongoStore.create({
         mongoUrl: options.mongoDB.dbURL,
     }),
-    secret: "claveSecreta",
+    secret: process.env.SESSION_PASSWORD,
     resave: false,
     saveUninitialized: false,
     cookie:{maxAge:600000}

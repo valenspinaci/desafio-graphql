@@ -26,12 +26,6 @@ class CartsService{
     static async deleteCartById(id){
         await ContenedorDAOCarts.deleteById(id)
     }
-    //Borrar determinado producto de determinado carrito
-    static async deleteProdById(idCarrito, idProd){
-        const cart = await ContenedorDAOCarts.getCartById(idCarrito);
-        const prod = await cart.find(p => p.id === idProd)
-        await deleteProdById(prod)
-    }
 }
 
 export {CartsService};

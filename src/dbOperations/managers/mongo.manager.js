@@ -10,7 +10,7 @@ class ContenedorMongo{
             await this.mongoModel.create(product);
             return product;
         } catch (error) {
-            console.log("No se pudo guardar el producto")
+            console.log(error)
         }
     }
 
@@ -65,16 +65,6 @@ class ContenedorMongo{
             await producto.update(req.body);
         } catch (error) {
             console.log("No se pudo actualizar el producto")
-        }
-    }
-
-    async deleteProdById(idCart, idProd){
-        try {
-            let cart = await this.getById(idCart);
-            let prod = await cart.find(p => p.id === idProd);
-            await cart.deleteOne(prod)
-        } catch (error) {
-            console.log("No se pudo eliminar el producto")
         }
     }
 }

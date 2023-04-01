@@ -36,7 +36,8 @@ class CartController{
     static async uploadCart(req,res){
         try {
             if(admin){
-                const response = await CartsService.uploadCart(req.body);
+                const products = req.body;
+                const response = await CartsService.uploadCart(products);
                 res.status(200).json({
                     status:"Success",
                     data:response
